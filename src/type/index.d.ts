@@ -3,8 +3,9 @@ type CountryDataType = {
   iid: {
     root: string;
   };
-  capital: string[];
-  flag: {
+  ccn3: string;
+  capital?: string[];
+  flags: {
     png: string;
     svg: string;
   };

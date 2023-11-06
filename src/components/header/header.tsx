@@ -5,8 +5,14 @@ import "./header.scss";
 
 function Header() {
   return (
-    <div>
-      <Image src={logo} alt="App logo" />
+    <div className="header">
+      <Image
+        src={logo}
+        alt="App logo"
+        className="header__logo-image"
+        height={50}
+        loading="lazy"
+      />
     </div>
   );
 }

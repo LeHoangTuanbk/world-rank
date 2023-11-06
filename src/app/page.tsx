@@ -9,14 +9,20 @@ function Home() {
     "https://restcountries.com/v3.1/all"
   );
   return (
-    <div className="home">
-      <FoundCountry />
-      <SearchInput />
-      <CountryTable
-        countryData={countryData}
-        isLoading={isLoading}
-        error={error}
-      />
+    <div className="container">
+      <div className="find-and-search">
+        <FoundCountry numberOfCountriesFound={countryData?.length} />
+        <div className="search-input-wrapper">
+          <SearchInput />
+        </div>
+      </div>
+      <div className="country-table-wrapper">
+        <CountryTable
+          countriesData={countryData}
+          isLoading={isLoading}
+          error={error}
+        />
+      </div>
     </div>
   );
 }

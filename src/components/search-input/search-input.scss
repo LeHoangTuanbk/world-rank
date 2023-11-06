@@ -1,0 +1,25 @@
+.search-input {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--background-color-light);
+  color: var(--text-color-secondary);
+  & > input {
+    width: 30vw;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    font-weight: 300;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: inherit;
+    }
+  }
+  &__icon {
+    margin-right: 1rem;
+  }
+}

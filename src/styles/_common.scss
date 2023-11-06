@@ -1,0 +1,25 @@
+:root {
+  --text-color: #{$text-color};
+  --text-color-secondary: #{$text-color-secondary};
+  --background-color: #{$background-color};
+  --background-color-white: #{$background-color-white};
+  --background-color-light: #{$background-color-light};
+}
+
+[data-theme="dark"] {
+  --text-color: #{$text-color-dark-mode};
+  --text-color-secondary: #{$text-color-secondary};
+  --background-color: #{$background-color-dark-mode};
+  --background-color-light: #{$background-color-light-dark-mode};
+  --background-color-white: #{$background-color-white-dark-mode};
+}
+
+html {
+  font-size: 62.5%; // 10px;
+}
+
+body {
+  font-size: 1.6rem; //16px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
