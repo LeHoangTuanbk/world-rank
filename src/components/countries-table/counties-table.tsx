@@ -35,7 +35,7 @@ function CountryTable({ countriesData, isLoading, error }: CountryTableProps) {
       {countriesData.map((country, index) => (
         <Link href={`/country/${country.ccn3}`} key={index}>
           <div className="country-table__row">
-            <span>
+            <span className="country-table__name">
               <Image
                 src={country.flags.svg}
                 alt={country.name.common}

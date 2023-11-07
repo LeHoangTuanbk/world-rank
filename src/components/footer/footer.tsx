@@ -1,7 +1,7 @@
-import React from "react";
+import "./footer.scss";
 
 function Footer() {
-  return <div>Developed by TuanLeHoang</div>;
+  return <div className="footer">Developed by TuanLeHoang</div>;
 }
 
 export default Footer;
