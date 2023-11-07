@@ -15,14 +15,20 @@ type CountryDataType = {
   name: {
     common: string;
     official: string;
+    nativeName: {
+      [key: string]: {
+        official: string;
+        common: string;
+      };
+    };
   };
   currencies: {
     [key: string]: {
-      [key: string]: string;
-      [key: string]: string;
+      name: string;
+      symbol: string;
     };
   };
-  border?: string[];
+  borders?: string[];
   area: number;
   region: string;
   maps: {

@@ -60,7 +60,7 @@ function CountryTable({
           </span>
         </button>
         <button onClick={changeAreaOrder}>
-          Area (km2)
+          Area (km²)
           <span>
             {areaOrder === "desc" ? (
               <AiOutlineArrowUp />
