@@ -32,3 +32,6 @@ type CountryDataType = {
   subregion: string;
   population: number;
 };
+
+type order = "asc" | "desc";
+type field = "population" | "area";
