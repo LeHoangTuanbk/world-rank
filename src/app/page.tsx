@@ -50,9 +50,8 @@ function Home() {
   };
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const countriesPerPage = 50;
-  const [tableDataPage, setTableDataPage] = useState<CountryDataType[]>([]); // Initialize as an empty array
-
+  const countriesPerPage = 10;
+  const [tableDataPage, setTableDataPage] = useState<CountryDataType[]>([]);
   useEffect(() => {
     if (tableData) {
       const startIndex = (currentPage - 1) * countriesPerPage;
@@ -68,7 +67,7 @@ function Home() {
     if (countryData) {
       numberOfPages = Math.ceil(countryData.length / countriesPerPage);
       setNumberOfPages(numberOfPages);
-      setCurrentPage((prevPage) => Math.min(prevPage, numberOfPages)); // Ensure current page is within valid range
+      setCurrentPage((prevPage) => Math.min(prevPage, numberOfPages));
     }
   }, [countryData, countriesPerPage]);
 
