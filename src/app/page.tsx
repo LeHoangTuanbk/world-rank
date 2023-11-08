@@ -7,7 +7,7 @@ import { useCountriesDataContext } from "@/contexts/countriesDataContext";
 function Home() {
   const { countryData, isLoading, error } = useCountriesDataContext();
 
-  const [tableData, setTableData] = useState<CountryDataType[] | undefined>();
+  const [tableData, setTableData] = useState<CountryDataType[]>();
 
   useEffect(() => {
     setTableData(countryData);
@@ -23,7 +23,7 @@ function Home() {
   };
 
   const handleSortCountryData = (order: order, field: field) => {
-    const sortedData = countryData?.sort(
+    const sortedData = tableData?.sort(
       (a: CountryDataType, b: CountryDataType) => {
         if (field === "population") {
           if (order === "asc") {
@@ -38,6 +38,7 @@ function Home() {
             return b.area - a.area;
           }
         }
+        return 0;
       }
     );
     setTableData(sortedData);
@@ -46,7 +47,9 @@ function Home() {
   return (
     <div className="container">
       <div className="find-and-search">
-        <FoundCountry numberOfCountriesFound={countryData?.length} />
+        <FoundCountry
+          numberOfCountriesFound={countryData ? countryData?.length : " "}
+        />
         <div className="search-input-wrapper">
           <SearchInput handleSearchByName={handleSearchByName} />
         </div>

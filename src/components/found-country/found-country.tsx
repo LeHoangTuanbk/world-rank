@@ -2,7 +2,7 @@ import React from "react";
 import "./found-country.scss";
 
 type FoundCountryProps = {
-  numberOfCountriesFound: number;
+  numberOfCountriesFound: number | string;
 };
 
 function FoundCountry({ numberOfCountriesFound }: FoundCountryProps) {
