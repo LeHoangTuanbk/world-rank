@@ -1,5 +1,6 @@
 "use client";
-import { useCountry } from "@/hooks/useCountry";
+import { useCountriesDataContext } from "@/contexts/countriesDataContext";
+
 import "./page.scss";
 import Link from "next/link";
 
@@ -10,13 +11,18 @@ type CountryDetailProps = {
 };
 
 function CountryDetail({ params }: CountryDetailProps) {
-  let { countryData, isLoading, error } = useCountry(
-    `https://restcountries.com/v3.1/alpha/${params.id}`
-  );
+  let { countryData, isLoading, error } = useCountriesDataContext();
+
+  countryData = countryData?.filter(
+    (country) => country.ccn3 === params.id
+  ) as CountryDataType[];
 
   if (isLoading) return <div className="container">Loading...</div>;
   if (error)
     return <div className="container">Error: {error.name.message}</div>;
+  countryData = countryData?.filter(
+    (country) => country.ccn3 === params.id
+  ) as CountryDataType[];
 
   const countryDataDetail: CountryDataType = countryData[0];
   console.log(countryData);

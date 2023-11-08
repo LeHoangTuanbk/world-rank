@@ -13,8 +13,9 @@ function Home() {
     setTableData(countryData);
   }, [countryData]);
 
+  console.log(countryData);
+
   const handleSearchByName = (name: string) => {
-    console.log(name);
     const filteredData = countryData?.filter((country: CountryDataType) =>
       country.name.common.toLowerCase().includes(name.toLowerCase())
     );
