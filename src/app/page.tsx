@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useCountry } from "@/hooks/useCountry";
 import "./page.scss";
 import { CountryTable, FoundCountry, SearchInput } from "@/components";
+import { useCountriesDataContext } from "@/contexts/countriesDataContext";
 
 function Home() {
-  const { countryData, isLoading, error } = useCountry(
-    "https://restcountries.com/v3.1/all"
-  );
+  const { countryData, isLoading, error } = useCountriesDataContext();
 
   const [tableData, setTableData] = useState<CountryDataType[] | undefined>();
 
