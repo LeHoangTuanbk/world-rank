@@ -20,7 +20,7 @@ function Pagination({
 
   return (
     <div className="pagination">
-      <button onClick={prePage}>
+      {/* <button onClick={prePage}>
         <GrFormPrevious />
       </button>
       {pageNumbers.map((pageNumber) => {
@@ -49,7 +49,7 @@ function Pagination({
 
       <button onClick={nextPage}>
         <GrFormNext />
-      </button>
+      </button> */}
     </div>
   );
 }
