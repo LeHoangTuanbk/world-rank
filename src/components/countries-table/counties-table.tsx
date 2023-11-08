@@ -18,9 +18,11 @@ function CountryTable({
   error,
   handleSortCountryData,
 }: CountryTableProps) {
+  const [populationOrder, setPopulationOrder] = useState<order>("asc");
+  const [areaOrder, setAreaOrder] = useState<order>("asc");
+
   if (error) return <div>Error: {error.name.message}</div>;
   if (isLoading) return <div>Loading...</div>;
-  const [populationOrder, setPopulationOrder] = useState<order>("asc");
 
   const changePopulationOrder = () => {
     if (populationOrder === "asc") {
@@ -31,8 +33,6 @@ function CountryTable({
       handleSortCountryData("asc", "population");
     }
   };
-
-  const [areaOrder, setAreaOrder] = useState<order>("asc");
 
   const changeAreaOrder = () => {
     if (areaOrder === "asc") {
