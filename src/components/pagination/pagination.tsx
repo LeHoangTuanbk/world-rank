@@ -27,6 +27,7 @@ function Pagination({
         if (pageNumber === currentPage) {
           return (
             <span
+              key={pageNumbers.toString()}
               className="pagination__index active"
               onClick={() => goToPage(pageNumber)}
             >
@@ -36,6 +37,7 @@ function Pagination({
         } else {
           return (
             <span
+              key={pageNumbers.toString()}
               className="pagination__index"
               onClick={() => goToPage(pageNumber)}
             >
