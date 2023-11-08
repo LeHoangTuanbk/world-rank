@@ -93,7 +93,7 @@ function CountryDetail({ params }: CountryDetailProps) {
             </div>
             <div className="map-link | p-4">
               <span>Google maps</span>
-              <a href={countryDataDetail.maps.googleMaps}>
+              <a href={countryDataDetail.maps.googleMaps} target="_blank">
                 {countryDataDetail.maps.googleMaps}
               </a>
             </div>

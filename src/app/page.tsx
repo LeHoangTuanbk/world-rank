@@ -51,23 +51,26 @@ function Home() {
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const countriesPerPage = 50;
-  const [tableDataPage, setTableDataPage] = useState<
-    CountryDataType[] | undefined
-  >(undefined);
-  // const [numberOfPages, setNumberOfPages] = useState<number>(0);
-  let numberOfPages: number;
+  const [tableDataPage, setTableDataPage] = useState<CountryDataType[]>([]); // Initialize as an empty array
 
   useEffect(() => {
     if (tableData) {
-      numberOfPages = Math.ceil(tableData?.length / countriesPerPage);
-      setTableDataPage(
-        tableData?.splice(
-          countriesPerPage * (currentPage - 1),
-          countriesPerPage * currentPage + 1
-        )
-      );
+      const startIndex = (currentPage - 1) * countriesPerPage;
+      const endIndex = startIndex + countriesPerPage;
+      const tempData = tableData.slice(startIndex, endIndex);
+      setTableDataPage(tempData);
     }
-  }, []);
+  }, [currentPage, tableData, countriesPerPage]);
+
+  let [numberOfPages, setNumberOfPages] = useState<number>(0);
+
+  useEffect(() => {
+    if (countryData) {
+      numberOfPages = Math.ceil(countryData.length / countriesPerPage);
+      setNumberOfPages(numberOfPages);
+      setCurrentPage((prevPage) => Math.min(prevPage, numberOfPages)); // Ensure current page is within valid range
+    }
+  }, [countryData, countriesPerPage]);
 
   const handleNextPage = () => {
     if (currentPage < numberOfPages) {
@@ -76,7 +79,9 @@ function Home() {
   };
 
   const handlePrePage = () => {
-    setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   const goToPage = (pageNumber: number) => {
@@ -95,13 +100,13 @@ function Home() {
       </div>
       <div className="country-table-wrapper">
         <CountryTable
-          countriesData={tableData}
+          countriesData={tableDataPage}
           isLoading={isLoading}
           error={error}
           handleSortCountryData={handleSortCountryData}
         />
       </div>
-      {/* <div>
+      <div>
         <Pagination
           currentPage={currentPage}
           numberOfPages={numberOfPages}
@@ -109,7 +114,7 @@ function Home() {
           nextPage={handleNextPage}
           goToPage={goToPage}
         />
-      </div> */}
+      </div>
     </div>
   );
 }
