@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useCountry } from "@/hook/useCountry";
+import { useCountry } from "@/hooks/useCountry";
 import "./page.scss";
 import { CountryTable, FoundCountry, SearchInput } from "@/components";
 
