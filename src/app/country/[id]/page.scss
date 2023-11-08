@@ -1,0 +1,76 @@
+.country-detail-container {
+  display: flex;
+  gap: 5rem;
+  margin-top: 6rem;
+  margin-inline: 12rem;
+
+  .country-general {
+    flex: 1;
+    padding: 3rem 3.5rem 5rem;
+    background-color: var(--background-color-white);
+    border-radius: 12px;
+    text-align: center;
+    & img {
+      border-radius: 12px;
+    }
+
+    .common-name {
+      margin-top: 2.5rem;
+      font-weight: 600;
+      color: var(--text-color-third);
+      line-height: 1;
+    }
+
+    .region {
+      margin-top: 1rem;
+      line-height: 1;
+    }
+
+    .population-and-area {
+      margin-top: 4.5rem;
+      display: flex;
+      .population {
+        flex: 1;
+      }
+      .area {
+        flex: 1;
+      }
+    }
+  }
+  .country-detail {
+    flex: 3;
+    background-color: var(--background-color-white);
+    border-radius: 12px;
+    font-weight: 300;
+    padding-block: 3rem 5rem;
+
+    &__title {
+      color: var(--text-color-third);
+      font-weight: 500;
+    }
+
+    &__content {
+      margin-top: 2.5rem;
+      & > * {
+        display: flex;
+        padding-block: 2rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid var(--text-color-secondary);
+        }
+        & > *:first-child {
+          display: inline-block;
+          color: var(--text-color-secondary);
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
+
+.link-container {
+  margin: 5rem 12rem;
+  a {
+    text-decoration: underline;
+  }
+}

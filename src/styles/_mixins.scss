@@ -1,0 +1,16 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin center-flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin grid-layout($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-gap: $gap;
+}
