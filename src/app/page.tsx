@@ -1,7 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./page.scss";
-import { CountryTable, FoundCountry, SearchInput } from "@/components";
+import {
+  CountryTable,
+  FoundCountry,
+  Pagination,
+  SearchInput,
+} from "@/components";
 import { useCountriesDataContext } from "@/contexts/countriesDataContext";
 
 function Home() {
@@ -13,7 +18,7 @@ function Home() {
     setTableData(countryData);
   }, [countryData]);
 
-  console.log(countryData);
+  // console.log(countryData);
 
   const handleSearchByName = (name: string) => {
     const filteredData = countryData?.filter((country: CountryDataType) =>
@@ -44,6 +49,40 @@ function Home() {
     setTableData(sortedData);
   };
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const countriesPerPage = 50;
+  const [tableDataPage, setTableDataPage] = useState<
+    CountryDataType[] | undefined
+  >(undefined);
+  // const [numberOfPages, setNumberOfPages] = useState<number>(0);
+  let numberOfPages: number;
+
+  useEffect(() => {
+    if (tableData) {
+      numberOfPages = Math.ceil(tableData?.length / countriesPerPage);
+      setTableDataPage(
+        tableData?.splice(
+          countriesPerPage * (currentPage - 1),
+          countriesPerPage * currentPage + 1
+        )
+      );
+    }
+  }, []);
+
+  const handleNextPage = () => {
+    if (currentPage < numberOfPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrePage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const goToPage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="container">
       <div className="find-and-search">
@@ -62,6 +101,15 @@ function Home() {
           handleSortCountryData={handleSortCountryData}
         />
       </div>
+      {/* <div>
+        <Pagination
+          currentPage={currentPage}
+          numberOfPages={numberOfPages}
+          prePage={handlePrePage}
+          nextPage={handleNextPage}
+          goToPage={goToPage}
+        />
+      </div> */}
     </div>
   );
 }

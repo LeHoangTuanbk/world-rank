@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  margin-top: 5rem;
+  &__index {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  .active {
+    text-decoration: underline;
+    font-style: italic;
+    cursor: pointer;
+  }
+}
